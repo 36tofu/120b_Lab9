@@ -65,10 +65,10 @@ typedef struct task {
   int (*TickFct)(int); // Function to call for task's tick
 } task;
 
-task tasks[3];
+task tasks[2];
 
-const unsigned char tasksNum = 3;
-const unsigned long tasksPeriodGCD = 1;
+const unsigned char tasksNum = 2;
+const unsigned long tasksPeriodGCD = 100;
 const unsigned long periodBlinkLED = 1000;
 const unsigned long periodThreeLEDs = 1000;
 const unsigned long periodCombined = 1;
@@ -142,6 +142,7 @@ int TickFct_BlinkLED(int state) {
      default:
         break;
   } // State actions
+  //PORTD = tmpDT1;
   return state;
 }
 
@@ -176,6 +177,7 @@ int TickFct_ThreeLEDs(int state) {
      default:
         break;
   } // State actions
+  PORTD = tmpDT2;
   return state;
 }
 
